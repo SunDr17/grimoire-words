@@ -27,7 +27,7 @@ export function LightBackground({ levelId, children }: LightBackgroundProps) {
     <View style={styles.container}>
       <Image source={source} style={styles.image} resizeMode="cover" />
       <LinearGradient
-        colors={['rgba(0,0,0,0.55)', 'rgba(0,0,0,0.35)', 'rgba(0,0,0,0.45)', 'rgba(0,0,0,0.6)']}
+        colors={['rgba(0,0,0,0.30)', 'rgba(0,0,0,0.15)', 'rgba(0,0,0,0.20)', 'rgba(0,0,0,0.35)']}
         style={styles.overlay}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}

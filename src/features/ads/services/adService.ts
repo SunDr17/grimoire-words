@@ -3,11 +3,17 @@ import {
   RewardedAd,
   AdEventType,
   RewardedAdEventType,
+  MaxAdContentRating,
+  mobileAds,
 } from 'react-native-google-mobile-ads'
 import { AD_UNIT_IDS, AD_FREQUENCY } from '../constants'
 import type { AdState } from '../types'
 import { createDefaultAdState } from '../types'
 import { getAdState, saveAdState } from '@/persistence/storage'
+
+const CHILD_AD_REQUEST_OPTIONS = {
+  requestNonPersonalizedAdsOnly: true,
+}
 
 let interstitialAd: InterstitialAd | null = null
 let rewardedAd: RewardedAd | null = null
@@ -16,19 +22,33 @@ let initialized = false
 
 function loadInterstitial(): void {
   if (adState.adsDisabled) return
-  interstitialAd = InterstitialAd.createForAdRequest(AD_UNIT_IDS.interstitial)
+  interstitialAd = InterstitialAd.createForAdRequest(
+    AD_UNIT_IDS.interstitial,
+    CHILD_AD_REQUEST_OPTIONS,
+  )
   interstitialAd.load()
 }
 
 function loadRewarded(): void {
   if (adState.adsDisabled) return
-  rewardedAd = RewardedAd.createForAdRequest(AD_UNIT_IDS.rewarded)
+  rewardedAd = RewardedAd.createForAdRequest(
+    AD_UNIT_IDS.rewarded,
+    CHILD_AD_REQUEST_OPTIONS,
+  )
   rewardedAd.load()
 }
 
 export async function initializeAds(): Promise<void> {
   if (initialized) return
   initialized = true
+
+  await mobileAds().setRequestConfiguration({
+    maxAdContentRating: MaxAdContentRating.T,
+    tagForChildDirectedTreatment: false,
+    tagForUnderAgeOfConsent: false,
+  })
+
+  await mobileAds().initialize()
 
   adState = await getAdState()
 

@@ -63,12 +63,12 @@ export default function ResultsScreen() {
     save()
   }, [saved, won, levelId, stars, baseScore, wordsFound, config.isBoss])
 
-  // Show interstitial after non-boss level wins
+  // Track level completion for ad frequency (interstitial shown on navigation)
   useEffect(() => {
     if (won && !config.isBoss) {
-      trackLevelComplete().then(() => tryShowInterstitial())
+      trackLevelComplete()
     }
-  }, [won, config.isBoss, trackLevelComplete, tryShowInterstitial])
+  }, [won, config.isBoss, trackLevelComplete])
 
   const handleDoubleScore = async () => {
     if (doubled) return
@@ -122,6 +122,8 @@ export default function ResultsScreen() {
   const nextLevelId = won && levelId < 100 && !isLevel100Win ? levelId + 1 : levelId
 
   const handlePlayLevel = useCallback(async () => {
+    await tryShowInterstitial()
+
     if (isLevel50Win) {
       router.replace({ pathname: '/(tabs)/map', params: { city: 'hollow' } })
       return
@@ -132,7 +134,7 @@ export default function ResultsScreen() {
       return
     }
     router.replace(`/level/${nextLevelId}`)
-  }, [nextLevelId, spendHP, isLevel50Win])
+  }, [nextLevelId, spendHP, isLevel50Win, tryShowInterstitial])
 
   const handleWatchAdForLife = useCallback(async () => {
     const rewarded = await tryShowRewarded('restoreLife')

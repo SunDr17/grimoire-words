@@ -22,7 +22,7 @@ export function DarkBackground({ imageIndex, children }: DarkBackgroundProps) {
     <View style={styles.container}>
       <Image source={source} style={styles.image} resizeMode="cover" />
       <LinearGradient
-        colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.4)']}
+        colors={['rgba(0,0,0,0.25)', 'rgba(0,0,0,0.40)', 'rgba(0,0,0,0.25)']}
         style={styles.overlay}
       />
       <View style={styles.vignetteTop} />

@@ -47,8 +47,8 @@ function createMapTheme(
     compassBlade: { backgroundColor: parchmentColor },
     compassCenter: { backgroundColor: compassCenter },
     titleColor: { color: parchmentColor },
-    subtitleColor: { color: lineColor },
-    levelCountColor: { color: lineColor },
+    subtitleColor: { color: parchmentColor },
+    levelCountColor: { color: parchmentColor },
     dividerDot: { backgroundColor: lineColor + '88' },
     dividerLine: { backgroundColor: lineColor + '66' },
     footerDivider: { backgroundColor: lineColor + '66' },
@@ -128,7 +128,7 @@ export const CampaignMap = React.memo(function CampaignMap({
 
       {/* Dark overlay for readability */}
       <LinearGradient
-        colors={['rgba(0,0,0,0.75)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.65)', 'rgba(0,0,0,0.8)']}
+        colors={['rgba(0,0,0,0.55)', 'rgba(0,0,0,0.40)', 'rgba(0,0,0,0.45)', 'rgba(0,0,0,0.60)']}
         style={StyleSheet.absoluteFill}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: MAP_PADDING,
     paddingTop: SPACING.md,
-    paddingBottom: 100,
+    paddingBottom: 160,
   },
   titleBlock: {
     alignItems: 'center',
@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
     letterSpacing: 6,
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 10,
+    textShadowRadius: 16,
   },
   mapTitle2: {
     fontFamily: FONTS.title,
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 6,
+    textShadowRadius: 10,
   },
   titleDivider: {
     flexDirection: 'row',
@@ -373,11 +373,11 @@ const styles = StyleSheet.create({
   mapSubtitle: {
     fontFamily: FONTS.mono,
     fontSize: 11,
-    color: '#CCBBAA',
+    color: '#DDD0C0',
     fontStyle: 'italic',
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
+    textShadowRadius: 8,
   },
   levelCount: {
     fontFamily: FONTS.mono,
@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
+    textShadowRadius: 8,
   },
   mapArea: {
     position: 'relative',
@@ -403,12 +403,12 @@ const styles = StyleSheet.create({
   footerText: {
     fontFamily: FONTS.mono,
     fontSize: 10,
-    color: '#CCBBAA',
+    color: '#DDD0C0',
     fontStyle: 'italic',
     letterSpacing: 2,
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
+    textShadowRadius: 8,
   },
   hollowButton: {
     marginTop: SPACING.xl,

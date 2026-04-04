@@ -1,10 +1,10 @@
 export const COLORS = {
   thornwall: {
-    primary: '#1A0A00',
+    primary: '#2D1808',
     secondary: '#DAA520',
     accent: '#FFFACD',
-    wallpaper: '#2B1A10',
-    wallpaperLight: '#3D2B1C',
+    wallpaper: '#3D2818',
+    wallpaperLight: '#54402E',
   },
   hollow: {
     primary: '#000000',
@@ -14,12 +14,12 @@ export const COLORS = {
     blood: '#8B0000',
   },
   grimoire: {
-    primary: '#2B1810',
+    primary: '#3D2818',
     secondary: '#8B6914',
     accent: '#FF1493',
     parchment: '#D4A76A',
     parchmentDark: '#A07840',
-    ink: '#1A0A00',
+    ink: '#2D1808',
   },
   neon: {
     red: '#FF0000',
@@ -41,9 +41,9 @@ export const COLORS = {
     white: '#FFFFFF',
     textPrimary: '#FFFACD',
     textSecondary: '#DAA520',
-    textDim: '#8B7355',
-    background: '#1A0A00',
-    surface: '#2B1A10',
+    textDim: '#A89070',
+    background: '#2D1808',
+    surface: '#3D2818',
     error: '#FF4444',
     success: '#39FF14',
     warning: '#FFD700',

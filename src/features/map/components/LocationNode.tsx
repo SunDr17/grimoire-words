@@ -82,7 +82,7 @@ const thornwallTheme = StyleSheet.create({
   bossLabel: { color: COLORS.neon.red },
   currentLabel: { color: COLORS.neon.green },
   completedLabel: { color: COLORS.grimoire.parchment },
-  lockedLabel: { color: '#8B7355' },
+  lockedLabel: { color: '#B89878' },
   starFilled: {
     backgroundColor: COLORS.thornwall.secondary,
     shadowColor: COLORS.thornwall.secondary,
@@ -115,7 +115,7 @@ const hollowTheme = StyleSheet.create({
   bossLabel: { color: COLORS.neon.cyan },
   currentLabel: { color: COLORS.neon.green },
   completedLabel: { color: COLORS.hollow.accent },
-  lockedLabel: { color: '#445566' },
+  lockedLabel: { color: '#7799AA' },
   starFilled: {
     backgroundColor: COLORS.hollow.secondary,
     shadowColor: COLORS.hollow.secondary,
@@ -400,11 +400,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '600',
     lineHeight: 11,
-  },
-  lockedLabelShadow: {
     textShadowColor: '#000',
     textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 4,
+    textShadowRadius: 6,
+  },
+  lockedLabelShadow: {
+    textShadowRadius: 8,
   },
   starRow: {
     flexDirection: 'row',

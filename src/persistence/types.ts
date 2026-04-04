@@ -1,11 +1,12 @@
 import type { Language } from '@/shared/types'
+import { DEFAULT_LANGUAGE } from '@/shared/i18n/languageConfig'
 
 export interface AppSettings {
   readonly language: Language
 }
 
 export function createDefaultSettings(): AppSettings {
-  return { language: 'en' }
+  return { language: DEFAULT_LANGUAGE }
 }
 
 export interface LevelProgress {

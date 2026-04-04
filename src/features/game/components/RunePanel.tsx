@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Svg, { Path, Circle } from 'react-native-svg'
-import { COLORS, FONTS, FONT_SIZES, SPACING } from '@/shared/constants'
+import { COLORS, FONTS, FONT_SIZES, SPACING, UI_SCALE } from '@/shared/constants'
 import type { PowerUpType } from '@/shared/types'
 import { NeonGlow } from '@/shared/components'
 import { useLanguage } from '@/shared/i18n/LanguageProvider'
@@ -21,7 +21,7 @@ const POWER_COLORS: Record<PowerUpType, string> = {
 const POWER_KEYS: readonly PowerUpType[] = ['scatterRune', 'sightRune', 'stasisRune']
 
 function PowerIcon({ power, color }: { power: PowerUpType; color: string }) {
-  const size = 22
+  const size = Math.round(22 * UI_SCALE)
   switch (power) {
     case 'scatterRune':
       return (
@@ -104,6 +104,9 @@ export function RunePanel({
   )
 }
 
+const ORB_SIZE = Math.round(48 * UI_SCALE)
+const BADGE_SIZE = Math.round(16 * UI_SCALE)
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
   },
   powers: {
     flexDirection: 'row',
-    gap: SPACING.xl,
+    gap: Math.round(SPACING.xl * UI_SCALE),
   },
   powerButton: {
     alignItems: 'center',
@@ -121,9 +124,9 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
   powerOrb: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: ORB_SIZE,
+    height: ORB_SIZE,
+    borderRadius: ORB_SIZE / 2,
     borderWidth: 2,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     justifyContent: 'center',
@@ -131,7 +134,7 @@ const styles = StyleSheet.create({
   },
   powerLabel: {
     fontFamily: FONTS.mono,
-    fontSize: FONT_SIZES.xs,
+    fontSize: Math.round(FONT_SIZES.xs * UI_SCALE),
     fontWeight: '700',
   },
   countBadge: {
@@ -139,14 +142,14 @@ const styles = StyleSheet.create({
     top: -4,
     right: -4,
     fontFamily: FONTS.mono,
-    fontSize: FONT_SIZES.xs,
+    fontSize: Math.round(FONT_SIZES.xs * UI_SCALE),
     color: COLORS.ui.white,
     backgroundColor: COLORS.neon.red,
-    width: 16,
-    height: 16,
-    borderRadius: 8,
+    width: BADGE_SIZE,
+    height: BADGE_SIZE,
+    borderRadius: BADGE_SIZE / 2,
     textAlign: 'center',
-    lineHeight: 16,
+    lineHeight: BADGE_SIZE,
     overflow: 'hidden',
   },
 })

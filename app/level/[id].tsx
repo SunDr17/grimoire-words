@@ -295,26 +295,28 @@ function GamePlayContent({ levelConfig, board, lightColors, language, trie, inve
         </View>
       </View>
 
-      <WordPreview currentWord={state.currentWord} isDark={isDark} />
+      <View style={styles.gameContent}>
+        <WordPreview currentWord={state.currentWord} isDark={isDark} />
 
-      <LetterGrid
-        grid={state.grid}
-        gridSize={state.gridSize}
-        selectedCells={state.selectedCells}
-        decayedCells={state.decayedCells}
-        hiddenCells={state.hiddenCells}
-        hintCells={state.hintCells}
-        goldenCells={state.goldenCells}
-        lightColors={lightColors as string[]}
-        onSelect={handleSelectCell}
-        onDeselect={handleDeselectLast}
-        onClear={handleClearSelection}
-        onSubmit={handleSubmitWord}
-        enabled={state.status === 'playing'}
-        isDark={isDark}
-      />
+        <LetterGrid
+          grid={state.grid}
+          gridSize={state.gridSize}
+          selectedCells={state.selectedCells}
+          decayedCells={state.decayedCells}
+          hiddenCells={state.hiddenCells}
+          hintCells={state.hintCells}
+          goldenCells={state.goldenCells}
+          lightColors={lightColors as string[]}
+          onSelect={handleSelectCell}
+          onDeselect={handleDeselectLast}
+          onClear={handleClearSelection}
+          onSubmit={handleSubmitWord}
+          enabled={state.status === 'playing'}
+          isDark={isDark}
+        />
 
-      <FoundWordsList words={state.foundWords} />
+        <FoundWordsList words={state.foundWords} />
+      </View>
 
       <RunePanel
         powerUps={state.powerUps}
@@ -362,6 +364,10 @@ const styles = StyleSheet.create({
   gameContainer: {
     flex: 1,
   },
+  gameContent: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   topBar: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -371,9 +377,9 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.35)',
     borderWidth: 1,
-    borderColor: COLORS.grimoire.secondary + '44',
+    borderColor: COLORS.grimoire.secondary + '77',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: SPACING.xs,

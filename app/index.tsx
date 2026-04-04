@@ -62,7 +62,7 @@ export default function TitleScreen() {
 
       {/* Dark overlay for readability */}
       <LinearGradient
-        colors={['rgba(0,0,0,0.65)', 'rgba(0,0,0,0.4)', 'rgba(0,0,0,0.45)', 'rgba(0,0,0,0.7)']}
+        colors={['rgba(0,0,0,0.40)', 'rgba(0,0,0,0.20)', 'rgba(0,0,0,0.25)', 'rgba(0,0,0,0.45)']}
         style={StyleSheet.absoluteFill}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
@@ -73,7 +73,7 @@ export default function TitleScreen() {
       <Svg style={StyleSheet.absoluteFill} pointerEvents="none">
         <Defs>
           <RadialGradient id="titleRedGlow" cx="50%" cy="40%" r="45%">
-            <Stop offset="0" stopColor="#FF0000" stopOpacity="0.1" />
+            <Stop offset="0" stopColor="#FF0000" stopOpacity="0.15" />
             <Stop offset="1" stopColor="#000" stopOpacity="0" />
           </RadialGradient>
         </Defs>
@@ -82,7 +82,7 @@ export default function TitleScreen() {
 
       {/* Vignette */}
       <LinearGradient
-        colors={['rgba(0,0,0,0.5)', 'transparent', 'transparent', 'rgba(0,0,0,0.6)']}
+        colors={['rgba(0,0,0,0.25)', 'transparent', 'transparent', 'rgba(0,0,0,0.30)']}
         style={StyleSheet.absoluteFill}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { COLORS, FONTS, FONT_SIZES, SPACING, BORDER_RADIUS } from '@/shared/constants'
+import { COLORS, FONTS, FONT_SIZES, SPACING, BORDER_RADIUS, UI_SCALE } from '@/shared/constants'
 import { scoreWord } from '@/features/board/utils/boardSolver'
 
 interface FoundWordsListProps {
@@ -40,34 +40,34 @@ export function FoundWordsList({ words }: FoundWordsListProps) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 44,
+    height: Math.round(44 * UI_SCALE),
     marginVertical: SPACING.sm,
   },
   scrollContent: {
     paddingHorizontal: SPACING.lg,
-    gap: SPACING.sm,
+    gap: Math.round(SPACING.sm * UI_SCALE),
     alignItems: 'center',
   },
   wordTag: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.grimoire.primary + 'CC',
-    paddingHorizontal: SPACING.md,
-    paddingVertical: SPACING.xs,
+    paddingHorizontal: Math.round(SPACING.md * UI_SCALE),
+    paddingVertical: Math.round(SPACING.xs * UI_SCALE),
     borderRadius: BORDER_RADIUS.sm,
     borderWidth: 1,
     borderColor: COLORS.grimoire.secondary + '44',
-    gap: SPACING.xs,
+    gap: Math.round(SPACING.xs * UI_SCALE),
   },
   wordText: {
     fontFamily: FONTS.mono,
-    fontSize: FONT_SIZES.sm,
+    fontSize: Math.round(FONT_SIZES.sm * UI_SCALE),
     color: COLORS.grimoire.parchment,
     fontWeight: '600',
   },
   scoreText: {
     fontFamily: FONTS.mono,
-    fontSize: FONT_SIZES.xs,
+    fontSize: Math.round(FONT_SIZES.xs * UI_SCALE),
     color: COLORS.neon.green,
   },
 })

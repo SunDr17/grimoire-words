@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback, use
 import type { Language } from '@/shared/types'
 import { getSettings, saveSettings } from '@/persistence/storage'
 import { translate } from './translations'
+import { DEFAULT_LANGUAGE } from './languageConfig'
 
 interface LanguageContextValue {
   readonly language: Language
@@ -10,13 +11,13 @@ interface LanguageContextValue {
 }
 
 const LanguageContext = createContext<LanguageContextValue>({
-  language: 'en',
+  language: DEFAULT_LANGUAGE,
   setLanguage: () => {},
   t: (key) => key,
 })
 
 export function LanguageProvider({ children }: { readonly children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en')
+  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE)
 
   useEffect(() => {
     getSettings().then((settings) => {

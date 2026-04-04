@@ -1,5 +1,5 @@
 export { COLORS } from './colors'
 export { FONTS, FONT_SIZES } from './typography'
 export { SPACING, BORDER_RADIUS } from './spacing'
-export { LAYOUT, calculateCellSize, calculateGridOrigin } from './layout'
+export { LAYOUT, UI_SCALE, calculateCellSize, calculateGridOrigin } from './layout'
 export { ANIMATION } from './animations'

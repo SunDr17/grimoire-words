@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "grimoire",
-    "slug": "grimoire",
+    "name": "Grimoire Words",
+    "slug": "grimoire-words",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -39,6 +39,13 @@
           "iosAppId": "ca-app-pub-1326375857154070~8015464924"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "fe9cd172-87f8-4797-a361-3e19253761e5"
+      }
+    },
+    "owner": "sundrs-organization"
   }
 }

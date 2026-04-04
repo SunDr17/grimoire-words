@@ -7,7 +7,7 @@ import { getStats } from '@/persistence/storage'
 import { type PlayerStats, createDefaultStats } from '@/persistence/types'
 import { useGameProgress } from '@/persistence/hooks/useGameProgress'
 import { useLanguage } from '@/shared/i18n/LanguageProvider'
-import type { Language } from '@/shared/types'
+import { ENABLED_LANGUAGES, SHOW_LANGUAGE_SELECTOR } from '@/shared/i18n/languageConfig'
 
 export default function ProfileScreen() {
   const { progress } = useGameProgress()
@@ -32,11 +32,6 @@ export default function ProfileScreen() {
     { label: t('profile.bestStreak'), value: t('profile.days', { count: stats.bestStreak }) },
   ]
 
-  const languageOptions: readonly { value: Language; label: string }[] = [
-    { value: 'en', label: 'EN' },
-    { value: 'ru', label: 'RU' },
-  ]
-
   return (
     <GradientBackground zone="grimoire">
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
@@ -44,30 +39,32 @@ export default function ProfileScreen() {
           {t('profile.characterSheet')}
         </RuneText>
 
-        <View style={styles.languageRow}>
-          <Text style={styles.languageLabel}>{t('profile.language')}</Text>
-          <View style={styles.languageToggle}>
-            {languageOptions.map((opt) => (
-              <Pressable
-                key={opt.value}
-                style={[
-                  styles.languageButton,
-                  language === opt.value && styles.languageButtonActive,
-                ]}
-                onPress={() => setLanguage(opt.value)}
-              >
-                <Text
+        {SHOW_LANGUAGE_SELECTOR && (
+          <View style={styles.languageRow}>
+            <Text style={styles.languageLabel}>{t('profile.language')}</Text>
+            <View style={styles.languageToggle}>
+              {ENABLED_LANGUAGES.map((opt) => (
+                <Pressable
+                  key={opt.value}
                   style={[
-                    styles.languageButtonText,
-                    language === opt.value && styles.languageButtonTextActive,
+                    styles.languageButton,
+                    language === opt.value && styles.languageButtonActive,
                   ]}
+                  onPress={() => setLanguage(opt.value)}
                 >
-                  {opt.label}
-                </Text>
-              </Pressable>
-            ))}
+                  <Text
+                    style={[
+                      styles.languageButtonText,
+                      language === opt.value && styles.languageButtonTextActive,
+                    ]}
+                  >
+                    {opt.label}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
           </View>
-        </View>
+        )}
 
         <View style={styles.sheet}>
           <View style={styles.header}>
