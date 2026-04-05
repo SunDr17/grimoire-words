@@ -1,3 +1,4 @@
+import * as Localization from 'expo-localization'
 import type { Language } from '@/shared/types'
 
 interface LanguageOption {
@@ -11,7 +12,16 @@ const LANGUAGE_OPTIONS: readonly LanguageOption[] = [
   { value: 'en', label: 'EN', enabled: true },
 ]
 
-export const DEFAULT_LANGUAGE: Language = 'ru'
+const SUPPORTED_LANGUAGES = new Set<string>(
+  LANGUAGE_OPTIONS.filter((opt) => opt.enabled).map((opt) => opt.value),
+)
+
+function detectLanguage(): Language {
+  const locale = Localization.getLocales()[0]?.languageCode ?? 'en'
+  return SUPPORTED_LANGUAGES.has(locale) ? (locale as Language) : 'en'
+}
+
+export const DEFAULT_LANGUAGE: Language = detectLanguage()
 
 export const ENABLED_LANGUAGES: readonly LanguageOption[] =
   LANGUAGE_OPTIONS.filter((opt) => opt.enabled)

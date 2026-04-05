@@ -38,7 +38,8 @@
           "androidAppId": "ca-app-pub-1326375857154070~5173339856",
           "iosAppId": "ca-app-pub-1326375857154070~8015464924"
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "extra": {
       "router": {},
