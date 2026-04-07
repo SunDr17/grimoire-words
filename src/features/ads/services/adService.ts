@@ -1,10 +1,10 @@
-import {
+import mobileAds, {
   InterstitialAd,
   RewardedAd,
   AdEventType,
   RewardedAdEventType,
   MaxAdContentRating,
-  mobileAds,
+  AdsConsent,
 } from 'react-native-google-mobile-ads'
 import { AD_UNIT_IDS, AD_FREQUENCY } from '../constants'
 import type { AdState } from '../types'
@@ -38,9 +38,22 @@ function loadRewarded(): void {
   rewardedAd.load()
 }
 
+async function gatherConsent(): Promise<boolean> {
+  try {
+    await AdsConsent.gatherConsent()
+    const { canRequestAds } = await AdsConsent.getConsentInfo()
+    return canRequestAds
+  } catch (error) {
+    console.error('Consent gathering failed:', error)
+    return false
+  }
+}
+
 export async function initializeAds(): Promise<void> {
   if (initialized) return
   initialized = true
+
+  const canRequestAds = await gatherConsent()
 
   await mobileAds().setRequestConfiguration({
     maxAdContentRating: MaxAdContentRating.T,
@@ -52,7 +65,7 @@ export async function initializeAds(): Promise<void> {
 
   adState = await getAdState()
 
-  if (!adState.adsDisabled) {
+  if (!adState.adsDisabled && canRequestAds) {
     loadInterstitial()
     loadRewarded()
   }

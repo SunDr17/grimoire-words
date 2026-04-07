@@ -24,7 +24,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.asakov.grimoire"
+      "package": "com.asakov.grimoire",
+      "versionCode": 6
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,7 +37,8 @@
         "react-native-google-mobile-ads",
         {
           "androidAppId": "ca-app-pub-1326375857154070~5173339856",
-          "iosAppId": "ca-app-pub-1326375857154070~8015464924"
+          "iosAppId": "ca-app-pub-1326375857154070~8015464924",
+          "delayAppMeasurementInit": true
         }
       ],
       "expo-localization"

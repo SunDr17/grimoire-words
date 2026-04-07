@@ -114,9 +114,9 @@ function getDarkImage(level: number): number | undefined {
 function getTimer(level: number, gridSize: GridSize, boss: boolean): number {
   const baseTimes: Record<GridSize, number> = {
     4: 90,
-    5: 100,
-    6: 120,
-    7: 150,
+    5: 110,
+    6: 140,
+    7: 180,
   }
 
   const base = baseTimes[gridSize]
@@ -193,30 +193,29 @@ function getLevelObjective(level: number, language: Language) {
 
   // Thornwall boss levels
   if (isBossLevel(level) && level <= 50) {
-    if (level <= 15) return createObjective('scoreTarget', 100 + level * 8, language)
-    if (level === 20) return createObjective('clearTheWall', 0, language)
-    if (level <= 30) return createObjective('wordHunter', 6 + Math.floor(level / 10), language)
-    if (level === 40) return createObjective('linguist', 5, language)
-    return createObjective('scoreTarget', 150 + level * 6, language)
+    if (level <= 15) return createObjective('scoreTarget', 80 + level * 6, language)
+    if (level === 20) return createObjective('wordHunter', 6, language)
+    if (level <= 30) return createObjective('wordHunter', 5 + Math.floor(level / 10), language)
+    if (level === 40) return createObjective('linguist', 4, language)
+    return createObjective('scoreTarget', 120 + level * 5, language)
   }
 
-  // Hollow boss levels (~25% harder)
+  // Hollow boss levels (~20% harder)
   if (isBossLevel(level) && level >= 51) {
-    if (level <= 65) return createObjective('scoreTarget', 200 + level * 8, language)
-    if (level === 70) return createObjective('clearTheWall', 0, language)
-    if (level <= 80) return createObjective('wordHunter', 8 + Math.floor(level / 10), language)
-    if (level === 90) return createObjective('linguist', 7, language)
-    return createObjective('scoreTarget', 250 + level * 6, language)
+    if (level <= 65) return createObjective('scoreTarget', 150 + level * 6, language)
+    if (level === 70) return createObjective('wordHunter', 7, language)
+    if (level <= 80) return createObjective('wordHunter', 6 + Math.floor(level / 10), language)
+    if (level === 90) return createObjective('linguist', 5, language)
+    return createObjective('scoreTarget', 200 + level * 5, language)
   }
 
-  // Hollow non-boss levels (~25% harder targets)
+  // Hollow non-boss levels (~20% harder targets)
   if (level >= 51) {
     const types: readonly import('@/shared/types').ObjectiveType[] = [
       'scoreTarget',
       'wordHunter',
       'linguist',
       'wordsmith',
-      'clearTheWall',
       'speedRun',
     ]
     const typeIndex = (level - 51) % types.length
@@ -224,17 +223,15 @@ function getLevelObjective(level: number, language: Language) {
 
     switch (type) {
       case 'wordHunter':
-        return createObjective('wordHunter', 5 + Math.floor(level / 10), language)
+        return createObjective('wordHunter', 4 + Math.floor(level / 15), language)
       case 'linguist':
-        return createObjective('linguist', 3 + Math.floor(level / 15), language)
+        return createObjective('linguist', 2 + Math.floor(level / 15), language)
       case 'wordsmith':
-        return createObjective('wordsmith', 6 + Math.floor(level / 20), language)
-      case 'clearTheWall':
-        return createObjective('clearTheWall', 0, language)
+        return createObjective('wordsmith', 5 + Math.floor(level / 25), language)
       case 'speedRun':
-        return createObjective('speedRun', 4 + Math.floor(level / 15), language)
+        return createObjective('speedRun', 3 + Math.floor(level / 20), language)
       default:
-        return createObjective('scoreTarget', 75 + level * 6, language)
+        return createObjective('scoreTarget', 60 + level * 5, language)
     }
   }
 
@@ -244,7 +241,6 @@ function getLevelObjective(level: number, language: Language) {
     'wordHunter',
     'linguist',
     'wordsmith',
-    'clearTheWall',
     'speedRun',
   ]
   const typeIndex = (level - 6) % types.length
@@ -252,17 +248,15 @@ function getLevelObjective(level: number, language: Language) {
 
   switch (type) {
     case 'wordHunter':
-      return createObjective('wordHunter', 4 + Math.floor(level / 10), language)
+      return createObjective('wordHunter', 3 + Math.floor(level / 15), language)
     case 'linguist':
-      return createObjective('linguist', 2 + Math.floor(level / 15), language)
+      return createObjective('linguist', 2 + Math.floor(level / 20), language)
     case 'wordsmith':
-      return createObjective('wordsmith', 5 + Math.floor(level / 20), language)
-    case 'clearTheWall':
-      return createObjective('clearTheWall', 0, language)
+      return createObjective('wordsmith', 5 + Math.floor(level / 25), language)
     case 'speedRun':
-      return createObjective('speedRun', 3 + Math.floor(level / 15), language)
+      return createObjective('speedRun', 3 + Math.floor(level / 20), language)
     default:
-      return createObjective('scoreTarget', 50 + level * 6, language)
+      return createObjective('scoreTarget', 40 + level * 5, language)
   }
 }
 
